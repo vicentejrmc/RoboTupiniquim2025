@@ -27,7 +27,7 @@ namespace RoboTupiniquim2025.ConsoleApp
             eixoX = grid[0];
             eixoY = grid[1];
 
-            // pocisao incial do robo
+            // posicão incial do robô
             Console.Write("Posicao inicial: ");
             string[] posicaoIncialRo = Console.ReadLine().ToUpper().Split(" ");
 
@@ -53,20 +53,49 @@ namespace RoboTupiniquim2025.ConsoleApp
             for (int i = 0; i < comandosEnviados.Length; i++)
             {
                 processarComandos[i] = (comandosEnviados[i]);
-                //teste de implementação
+                //teste de implementação / leitura
                 Console.WriteLine(processarComandos[i]);
             }
-             
-
-           
 
 
+            //Girar Esquerda
+            switch(direcao)
+            {
+                case 'N':
+                    direcao = 'O';
+                    break;
+                case 'O':
+                    direcao = 'S';
+                    break;
+                case 'S':
+                    direcao = 'L';
+                    break;
+                case 'L':
+                    direcao = 'N';
+                    break;
+            }
 
-
-
+            //Girar Direita
+            switch (direcao)
+            {
+                case 'N':
+                    direcao = 'L';
+                    break;
+                case 'L':
+                    direcao = 'S';
+                    break;
+                case 'S':
+                    direcao = 'O';
+                    break;
+                case 'O':
+                    direcao = 'N';
+                    break;
+            }
 
             Console.ReadLine();
         }
 
     }
+
+
 }
