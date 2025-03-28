@@ -7,8 +7,8 @@ namespace RoboTupiniquim2025.ConsoleApp
     {
         //Requisitos para implementação:
         //---------------------------------------------------------    
-        //Leitura das coordenadas do canto superior direito da área.
-        //Ler a posição inicial do robô.
+
+
         //Ler os comandos de direcionamento dados ao robô.
         //Processar os comandos de direcionamento dados ao robô.
         //Mover o robô de acordo às coordenadas de entrada. (../Leitura e entrada:/2.b:)
@@ -19,6 +19,21 @@ namespace RoboTupiniquim2025.ConsoleApp
 
         static void Main(string[] args)
         {
+            //Leitura das coordenadas do canto superior direito da área.
+            Console.Write("Cantos Superior Direito: ");
+            string[] cantoSuperiorDi = Console.ReadLine().Split(" ");
+            cantoSuperiorDi.ToArray();
+
+            int[] grid = new int[cantoSuperiorDi.Length];
+            for (int i = 0; i < cantoSuperiorDi.Length; i++)
+            {
+                grid[i] = int.Parse(cantoSuperiorDi[i]);
+            }
+
+
+
+            
+
 
 
 
