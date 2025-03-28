@@ -5,20 +5,15 @@ namespace RoboTupiniquim2025.ConsoleApp
 {
     internal class Program
     {
-        //Requisitos para implementação:
-        //---------------------------------------------------------    
-
-
-        //Ler os comandos de direcionamento dados ao robô.
-        //Processar os comandos de direcionamento dados ao robô.
-        //Mover o robô de acordo às coordenadas de entrada. (../Leitura e entrada:/2.b:)
-        //a: Criar métodos para movimentação do robô. (Direita/Esquerda 90°)
-        //b: Criar método para mover o robô conforme(Direção/Mover) ((x1, y0 = x, y+1) == x1, y1.)
-        //Exibir a posição final do robô.
 
 
         static void Main(string[] args)
         {
+            int eixoX, eixoY;
+            int posicaoX, posicaoY;
+            char direcao;
+
+
             //Leitura das coordenadas do canto superior direito da área.
             Console.Write("Cantos Superior Direito: ");
             string[] cantoSuperiorDi = Console.ReadLine().Split(" ");
@@ -29,10 +24,34 @@ namespace RoboTupiniquim2025.ConsoleApp
             {
                 grid[i] = int.Parse(cantoSuperiorDi[i]);
             }
+            eixoX = grid[0];
+            eixoY = grid[1];
+
+            // pocisao incial do robo
+
+            Console.Write("Posicao inicial: ");
+            string[] posicaoIncialRo = Console.ReadLine().ToUpper().Split(" ");
+            posicaoIncialRo.ToArray();
+
+            int[] posicaoRobo = new int[posicaoIncialRo.Length];
+            for (int i = 0; i < posicaoIncialRo.Length - 1; i++)
+            {
+                posicaoRobo[i] = int.Parse(posicaoIncialRo[i]);
+            }
+            posicaoX = posicaoRobo[0];
+            posicaoY = posicaoRobo[1];
+            direcao = char.Parse(posicaoIncialRo[2]);
+
+            // Teste (se) leitura correta.
+            Console.WriteLine($"{eixoX} {eixoY}");
+            Console.WriteLine($"{posicaoX} {posicaoY} {direcao}");
+
+            //Ler os comandos de direcionamento dados ao robô.
 
 
 
-            
+
+
 
 
 
