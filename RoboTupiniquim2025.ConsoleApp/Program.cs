@@ -28,12 +28,10 @@ namespace RoboTupiniquim2025.ConsoleApp
             eixoY = grid[1];
 
             // pocisao incial do robo
-
             Console.Write("Posicao inicial: ");
             string[] posicaoIncialRo = Console.ReadLine().ToUpper().Split(" ");
-            posicaoIncialRo.ToArray();
 
-            int[] posicaoRobo = new int[posicaoIncialRo.Length];
+            int[] posicaoRobo = new int[posicaoIncialRo.Length - 1];
             for (int i = 0; i < posicaoIncialRo.Length - 1; i++)
             {
                 posicaoRobo[i] = int.Parse(posicaoIncialRo[i]);
@@ -47,10 +45,20 @@ namespace RoboTupiniquim2025.ConsoleApp
             Console.WriteLine($"{posicaoX} {posicaoY} {direcao}");
 
             //Ler os comandos de direcionamento dados ao robô.
+            Console.Write("Enviar Comandos: ");
+            string comandosEnviados = Console.ReadLine().ToUpper();
+            comandosEnviados.ToArray();
 
+            char[] processarComandos = new char[comandosEnviados.Length];
+            for (int i = 0; i < comandosEnviados.Length; i++)
+            {
+                processarComandos[i] = (comandosEnviados[i]);
+                //teste de implementação
+                Console.WriteLine(processarComandos[i]);
+            }
+             
 
-
-
+           
 
 
 
