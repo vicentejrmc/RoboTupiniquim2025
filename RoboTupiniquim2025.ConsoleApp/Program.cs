@@ -11,7 +11,7 @@ namespace RoboTupiniquim2025.ConsoleApp
         {
             int eixoX, eixoY;
             int posicaoX, posicaoY;
-            char direcao;
+            char direcaoAt;
 
 
             //Leitura das coordenadas do canto superior direito da área.
@@ -38,11 +38,11 @@ namespace RoboTupiniquim2025.ConsoleApp
             }
             posicaoX = posicaoRobo[0];
             posicaoY = posicaoRobo[1];
-            direcao = char.Parse(posicaoIncialRo[2]);
+            direcaoAt = char.Parse(posicaoIncialRo[2]);
 
             // Teste (se) leitura correta.
             Console.WriteLine($"{eixoX} {eixoY}");
-            Console.WriteLine($"{posicaoX} {posicaoY} {direcao}");
+            Console.WriteLine($"{posicaoX} {posicaoY} {direcaoAt}");
 
             //Ler os comandos de direcionamento dados ao robô.
             Console.Write("Enviar Comandos: ");
@@ -57,40 +57,59 @@ namespace RoboTupiniquim2025.ConsoleApp
                 Console.WriteLine(processarComandos[i]);
             }
 
-
             //Girar Esquerda
-            switch(direcao)
+            switch (direcaoAt)
             {
                 case 'N':
-                    direcao = 'O';
+                    direcaoAt = 'O';
                     break;
                 case 'O':
-                    direcao = 'S';
+                    direcaoAt = 'S';
                     break;
                 case 'S':
-                    direcao = 'L';
+                    direcaoAt = 'L';
                     break;
                 case 'L':
-                    direcao = 'N';
+                    direcaoAt = 'N';
                     break;
             }
 
             //Girar Direita
-            switch (direcao)
+            switch (direcaoAt)
             {
                 case 'N':
-                    direcao = 'L';
+                    direcaoAt = 'L';
                     break;
                 case 'L':
-                    direcao = 'S';
+                    direcaoAt = 'S';
                     break;
                 case 'S':
-                    direcao = 'O';
+                    direcaoAt = 'O';
                     break;
                 case 'O':
-                    direcao = 'N';
+                    direcaoAt = 'N';
                     break;
             }
+
+
+
+            //Sistema  de decisão logica para Mover Robô
+            switch (direcaoAt)
+            {
+                case 'N':
+                    eixoY++;
+                    break;
+                case 'S':
+                    eixoY--;
+                    break;
+                case 'O':
+                    eixoX--;
+                    break;
+                case 'L':
+                    eixoY++;
+                    break;
+            }
+
 
             Console.ReadLine();
         }
