@@ -5,8 +5,6 @@ namespace RoboTupiniquim2025.ConsoleApp
 {
     internal class Program
     {
-
-
         static void Main(string[] args)
         {
             int eixoX, eixoY;
@@ -40,10 +38,6 @@ namespace RoboTupiniquim2025.ConsoleApp
             posicaoY = posicaoRobo[1];
             direcaoAt = char.Parse(posicaoIncialRo[2]);
 
-            // Teste (se) leitura correta.
-            Console.WriteLine($"{eixoX} {eixoY}");
-            Console.WriteLine($"{posicaoX} {posicaoY} {direcaoAt}");
-
             //Ler os comandos de direcionamento dados ao robô.
             Console.Write("Enviar Comandos: ");
             string comandosEnviados = Console.ReadLine().ToUpper();
@@ -57,6 +51,44 @@ namespace RoboTupiniquim2025.ConsoleApp
                 Console.WriteLine(processarComandos[i]);
             }
 
+
+            for (int i = 0; i < processarComandos.Length; i++)
+            {
+                if (processarComandos[i] == 'E')
+                    direcaoAt = GirarEsquerda(direcaoAt);
+
+                else if (processarComandos[i] == 'D')
+                    direcaoAt = GirarDireita(direcaoAt);
+                else if (processarComandos[i] == 'M')
+                {
+                    switch (direcaoAt)
+                    {
+                        case 'N':
+                            posicaoY++;
+                            break;
+                        case 'S':
+                            posicaoY--;
+                            break;
+                        case 'O':
+                            posicaoX--;
+                            break;
+                        case 'L':
+                            posicaoX++;
+                            break;
+
+                    }
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"{eixoX} {eixoY}");
+            Console.WriteLine($"{posicaoX} {posicaoY} {direcaoAt}");
+
+            Console.ReadLine();
+
+        }
+        public static char GirarEsquerda(char direcaoAt)
+        {
             //Girar Esquerda
             switch (direcaoAt)
             {
@@ -74,6 +106,11 @@ namespace RoboTupiniquim2025.ConsoleApp
                     break;
             }
 
+            return direcaoAt;
+        }
+
+        public static char GirarDireita(char direcaoAt)
+        {
             //Girar Direita
             switch (direcaoAt)
             {
@@ -91,30 +128,8 @@ namespace RoboTupiniquim2025.ConsoleApp
                     break;
             }
 
-
-
-            //Sistema  de decisão logica para Mover Robô
-            switch (direcaoAt)
-            {
-                case 'N':
-                    eixoY++;
-                    break;
-                case 'S':
-                    eixoY--;
-                    break;
-                case 'O':
-                    eixoX--;
-                    break;
-                case 'L':
-                    eixoY++;
-                    break;
-            }
-
-
-            Console.ReadLine();
+            return direcaoAt;
         }
 
     }
-
-
 }
