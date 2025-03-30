@@ -1,20 +1,22 @@
 ﻿using System.Diagnostics.Metrics;
 using System;
+using System.Security.Claims;
 
 namespace RoboTupiniquim2025.ConsoleApp
 {
     internal class Program
     {
+        public static int posR01X, posR01Y;
+        public static int posR02X, posR02Y;
+        public static int eixoX, eixoY;
+        public static char direcaoAtR01, direcaoAtR02;
+
         static void Main(string[] args)
         {
-            int eixoX, eixoY;
-            int posR01X, posR01Y;
-            int posR02X, posR02Y;
-
             ExibirMenu();
-            
+
             //Leitura das coordenadas do canto superior direito da área.
-            Console.Write("Cantos Superior Direito/Tamanho da área a ser percorrida: ");
+            Console.Write("Canto Superior Direito:");
             string[] cantoSuperiorDi = Console.ReadLine().Split(" ");
             cantoSuperiorDi.ToArray();
 
@@ -36,7 +38,7 @@ namespace RoboTupiniquim2025.ConsoleApp
             posR01X = posRobo01[0];
             posR01Y = posRobo01[1];
 
-            char direcaoAtR01 = char.Parse(posIncialRo01[2]);
+            direcaoAtR01 = char.Parse(posIncialRo01[2]);
 
             //Ler os comandos de direcionamento dados ao Robô01.
             Console.Write("Enviar Comandos Robo01: ");
@@ -84,7 +86,7 @@ namespace RoboTupiniquim2025.ConsoleApp
 
             posR02X = posRobo02[0];
             posR02Y = posRobo02[1];
-            char direcaoAtR02 = char.Parse(posIncialRo02[2]);
+            direcaoAtR02 = char.Parse(posIncialRo02[2]);
 
             //Ler os comandos de direcionamento dados ao Robô02.
             Console.Write("Enviar Comandos Robo02: ");
@@ -122,10 +124,7 @@ namespace RoboTupiniquim2025.ConsoleApp
                 }
             }
 
-            Console.WriteLine("Posição final Robô01:");
-            Console.WriteLine($"{posR01X} {posR01Y} {direcaoAtR01}");
-            Console.WriteLine("Posição final Robô02");
-            Console.WriteLine($"{posR02X} {posR02Y} {direcaoAtR02}");
+            ExibirResultado();
 
             Console.ReadLine();
         }
@@ -183,17 +182,41 @@ namespace RoboTupiniquim2025.ConsoleApp
             Console.WriteLine("------- Robô Tupiniquim 2025 ---------");
             Console.WriteLine("--------------------------------------\n");
             Console.WriteLine($"Temperatura em marte: {clima}° Celcius.");
-            
+
             Console.WriteLine("Status da Missão:");
             int percent = batery.Next(76, 100);
-            Console.WriteLine($"Robo01-R2D2: Conecção Estável - Baterias: {percent}%");
-            Console.WriteLine("--------------------------------------");        
-            batery.Next(76,100);
+            Console.WriteLine($"Robo01-R2D2: Conecção Estável - Baterias: {percent.ToString("F1")}%");
+            Console.WriteLine("--------------------------------------");
+            batery.Next(76, 100);
             percent = batery.Next(76, 100);
-            Console.WriteLine($"Robo02-C3PO: Conecção Estável - Baterias: {percent}%");
+            Console.WriteLine($"Robo02-C3PO: Conecção Estável - Baterias: {percent.ToString("F1")}%");
+            Console.WriteLine("--------------------------------------");
+
+            Console.WriteLine("Insira os parametros necessarios:\n");
+            Console.WriteLine("Ex: Canto superior Direito (5 5): Posição Inicial:(1 5 L) Comandos:(EMEMEMEEM)\n");
+        }
+
+        public static void ExibirResultado()
+        {
+            Random dadosProcessados = new Random();
+            double percentDados = dadosProcessados.Next(60, 100);
+
+            Console.Clear();
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("------- Robô Tupiniquim 2025 ---------");
             Console.WriteLine("--------------------------------------\n");
 
-            Console.WriteLine("Insira os parametros para começarmos:\n");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Percurso Completado:");
+            Console.WriteLine("Dados de Solo Coletados");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Posição final Robô01-R2D2:");
+            Console.WriteLine($"{posR01X} {posR01Y} {direcaoAtR01}");
+            Console.WriteLine("Posição final Robô02-C3PO");
+            Console.WriteLine($"{posR02X} {posR02Y} {direcaoAtR02}");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine($"{percentDados}% de dados Coletados processados com Sucesso.");
+            Console.WriteLine("--------------------------------------");
         }
     }
 }
