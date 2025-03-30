@@ -10,9 +10,11 @@ namespace RoboTupiniquim2025.ConsoleApp
             int eixoX, eixoY;
             int posR01X, posR01Y;
             int posR02X, posR02Y;
+
+            ExibirMenu();
             
             //Leitura das coordenadas do canto superior direito da área.
-            Console.Write("Cantos Superior Direito: ");
+            Console.Write("Cantos Superior Direito/Tamanho da área a ser percorrida: ");
             string[] cantoSuperiorDi = Console.ReadLine().Split(" ");
             cantoSuperiorDi.ToArray();
 
@@ -120,15 +122,12 @@ namespace RoboTupiniquim2025.ConsoleApp
                 }
             }
 
-
-
             Console.WriteLine("Posição final Robô01:");
             Console.WriteLine($"{posR01X} {posR01Y} {direcaoAtR01}");
             Console.WriteLine("Posição final Robô02");
             Console.WriteLine($"{posR02X} {posR02Y} {direcaoAtR02}");
 
             Console.ReadLine();
-
         }
         public static char GirarEsquerda(char direcaoAt)
         {
@@ -174,5 +173,27 @@ namespace RoboTupiniquim2025.ConsoleApp
             return direcaoAt;
         }
 
+        public static void ExibirMenu()
+        {
+            Random batery = new Random();
+            Random temp = new Random();
+            double clima = temp.Next(-125, 22);
+
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("------- Robô Tupiniquim 2025 ---------");
+            Console.WriteLine("--------------------------------------\n");
+            Console.WriteLine($"Temperatura em marte: {clima}° Celcius.");
+            
+            Console.WriteLine("Status da Missão:");
+            int percent = batery.Next(76, 100);
+            Console.WriteLine($"Robo01-R2D2: Conecção Estável - Baterias: {percent}%");
+            Console.WriteLine("--------------------------------------");        
+            batery.Next(76,100);
+            percent = batery.Next(76, 100);
+            Console.WriteLine($"Robo02-C3PO: Conecção Estável - Baterias: {percent}%");
+            Console.WriteLine("--------------------------------------\n");
+
+            Console.WriteLine("Insira os parametros para começarmos:\n");
+        }
     }
 }
