@@ -8,10 +8,9 @@ namespace RoboTupiniquim2025.ConsoleApp
         static void Main(string[] args)
         {
             int eixoX, eixoY;
-            int posicaoX, posicaoY;
-            char direcaoAt;
-
-
+            int posR01X, posR01Y;
+            int posR02X, posR02Y;
+            
             //Leitura das coordenadas do canto superior direito da área.
             Console.Write("Cantos Superior Direito: ");
             string[] cantoSuperiorDi = Console.ReadLine().Split(" ");
@@ -19,70 +18,114 @@ namespace RoboTupiniquim2025.ConsoleApp
 
             int[] grid = new int[cantoSuperiorDi.Length];
             for (int i = 0; i < cantoSuperiorDi.Length; i++)
-            {
                 grid[i] = int.Parse(cantoSuperiorDi[i]);
-            }
+
             eixoX = grid[0];
             eixoY = grid[1];
 
-            // posicão incial do robô
-            Console.Write("Posicao inicial: ");
-            string[] posicaoIncialRo = Console.ReadLine().ToUpper().Split(" ");
+            // posicão incial do Robô01
+            Console.Write("Posicao inicial Robo01: ");
+            string[] posIncialRo01 = Console.ReadLine().ToUpper().Split(" ");
 
-            int[] posicaoRobo = new int[posicaoIncialRo.Length - 1];
-            for (int i = 0; i < posicaoIncialRo.Length - 1; i++)
+            int[] posRobo01 = new int[posIncialRo01.Length - 1];
+            for (int i = 0; i < posIncialRo01.Length - 1; i++)
+                posRobo01[i] = int.Parse(posIncialRo01[i]);
+
+            posR01X = posRobo01[0];
+            posR01Y = posRobo01[1];
+
+            char direcaoAtR01 = char.Parse(posIncialRo01[2]);
+
+            //Ler os comandos de direcionamento dados ao Robô01.
+            Console.Write("Enviar Comandos Robo01: ");
+            string comandosRobo01 = Console.ReadLine().ToUpper();
+            comandosRobo01.ToArray();
+
+            char[] processarComandosR01 = new char[comandosRobo01.Length];
+
+            for (int i = 0; i < comandosRobo01.Length; i++)
+                processarComandosR01[i] = (comandosRobo01[i]);
+
+            for (int i = 0; i < processarComandosR01.Length; i++)
             {
-                posicaoRobo[i] = int.Parse(posicaoIncialRo[i]);
-            }
-            posicaoX = posicaoRobo[0];
-            posicaoY = posicaoRobo[1];
-            direcaoAt = char.Parse(posicaoIncialRo[2]);
-
-            //Ler os comandos de direcionamento dados ao robô.
-            Console.Write("Enviar Comandos: ");
-            string comandosEnviados = Console.ReadLine().ToUpper();
-            comandosEnviados.ToArray();
-
-            char[] processarComandos = new char[comandosEnviados.Length];
-            for (int i = 0; i < comandosEnviados.Length; i++)
-            {
-                processarComandos[i] = (comandosEnviados[i]);
-                //teste de implementação / leitura
-                Console.WriteLine(processarComandos[i]);
-            }
-
-
-            for (int i = 0; i < processarComandos.Length; i++)
-            {
-                if (processarComandos[i] == 'E')
-                    direcaoAt = GirarEsquerda(direcaoAt);
-
-                else if (processarComandos[i] == 'D')
-                    direcaoAt = GirarDireita(direcaoAt);
-                else if (processarComandos[i] == 'M')
+                if (processarComandosR01[i] == 'E')
+                    direcaoAtR01 = GirarEsquerda(direcaoAtR01);
+                else if (processarComandosR01[i] == 'D')
+                    direcaoAtR01 = GirarDireita(direcaoAtR01);
+                else if (processarComandosR01[i] == 'M')
                 {
-                    switch (direcaoAt)
+                    switch (direcaoAtR01)
                     {
                         case 'N':
-                            posicaoY++;
+                            posR01Y++;
                             break;
                         case 'S':
-                            posicaoY--;
+                            posR01Y--;
                             break;
                         case 'O':
-                            posicaoX--;
+                            posR01X--;
                             break;
                         case 'L':
-                            posicaoX++;
+                            posR01X++;
                             break;
-
                     }
                 }
             }
 
-            Console.WriteLine();
-            Console.WriteLine($"{eixoX} {eixoY}");
-            Console.WriteLine($"{posicaoX} {posicaoY} {direcaoAt}");
+            // Posicao inicial Robô02
+            Console.Write("Posicao inicial Robo02: ");
+            string[] posIncialRo02 = Console.ReadLine().ToUpper().Split(" ");
+
+            int[] posRobo02 = new int[posIncialRo02.Length - 1];
+            for (int i = 0; i < posIncialRo02.Length - 1; i++)
+                posRobo02[i] = int.Parse(posIncialRo02[i]);
+
+            posR02X = posRobo02[0];
+            posR02Y = posRobo02[1];
+            char direcaoAtR02 = char.Parse(posIncialRo02[2]);
+
+            //Ler os comandos de direcionamento dados ao Robô02.
+            Console.Write("Enviar Comandos Robo02: ");
+            string comandosRobo02 = Console.ReadLine().ToUpper();
+            comandosRobo01.ToArray();
+
+            char[] processarComandosR02 = new char[comandosRobo02.Length];
+
+            for (int i = 0; i < comandosRobo02.Length; i++)
+                processarComandosR02[i] = (comandosRobo02[i]);
+
+            for (int i = 0; i < processarComandosR02.Length; i++)
+            {
+                if (processarComandosR02[i] == 'E')
+                    direcaoAtR02 = GirarEsquerda(direcaoAtR02);
+                else if (processarComandosR02[i] == 'D')
+                    direcaoAtR02 = GirarDireita(direcaoAtR02);
+                else if (processarComandosR02[i] == 'M')
+                {
+                    switch (direcaoAtR02)
+                    {
+                        case 'N':
+                            posR02Y++;
+                            break;
+                        case 'S':
+                            posR02Y--;
+                            break;
+                        case 'O':
+                            posR02X--;
+                            break;
+                        case 'L':
+                            posR02X++;
+                            break;
+                    }
+                }
+            }
+
+
+
+            Console.WriteLine("Posição final Robô01:");
+            Console.WriteLine($"{posR01X} {posR01Y} {direcaoAtR01}");
+            Console.WriteLine("Posição final Robô02");
+            Console.WriteLine($"{posR02X} {posR02Y} {direcaoAtR02}");
 
             Console.ReadLine();
 
