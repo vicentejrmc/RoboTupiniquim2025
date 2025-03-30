@@ -56,9 +56,9 @@ namespace RoboTupiniquim2025.ConsoleApp
                 for (int i = 0; i < processarComandosR01.Length; i++)
                 {
                     if (processarComandosR01[i] == 'E')
-                        direcaoAtR01 = GirarEsquerda(direcaoAtR01);
+                        direcaoAtR01 = Orientacao.GirarEsquerda(direcaoAtR01);
                     else if (processarComandosR01[i] == 'D')
-                        direcaoAtR01 = GirarDireita(direcaoAtR01);
+                        direcaoAtR01 = Orientacao.GirarDireita(direcaoAtR01);
                     else if (processarComandosR01[i] == 'M')
                     {
                         switch (direcaoAtR01)
@@ -104,9 +104,9 @@ namespace RoboTupiniquim2025.ConsoleApp
                 for (int i = 0; i < processarComandosR02.Length; i++)
                 {
                     if (processarComandosR02[i] == 'E')
-                        direcaoAtR02 = GirarEsquerda(direcaoAtR02);
+                        direcaoAtR02 = Orientacao.GirarEsquerda(direcaoAtR02);
                     else if (processarComandosR02[i] == 'D')
-                        direcaoAtR02 = GirarDireita(direcaoAtR02);
+                        direcaoAtR02 = Orientacao.GirarDireita(direcaoAtR02);
                     else if (processarComandosR02[i] == 'M')
                     {
                         switch (direcaoAtR02)
@@ -142,49 +142,7 @@ namespace RoboTupiniquim2025.ConsoleApp
             Console.ReadKey();
 
         }
-        public static char GirarEsquerda(char direcaoAt)
-        {
-            //Girar Esquerda
-            switch (direcaoAt)
-            {
-                case 'N':
-                    direcaoAt = 'O';
-                    break;
-                case 'O':
-                    direcaoAt = 'S';
-                    break;
-                case 'S':
-                    direcaoAt = 'L';
-                    break;
-                case 'L':
-                    direcaoAt = 'N';
-                    break;
-            }
-
-            return direcaoAt;
-        }
-
-        public static char GirarDireita(char direcaoAt)
-        {
-            //Girar Direita
-            switch (direcaoAt)
-            {
-                case 'N':
-                    direcaoAt = 'L';
-                    break;
-                case 'L':
-                    direcaoAt = 'S';
-                    break;
-                case 'S':
-                    direcaoAt = 'O';
-                    break;
-                case 'O':
-                    direcaoAt = 'N';
-                    break;
-            }
-
-            return direcaoAt;
-        }
+       
 
         public static void ExibirMenu()
         {
