@@ -127,7 +127,7 @@ namespace RoboTupiniquim2025.ConsoleApp
                     }
                 }
 
-                Exibicao.ExibirResultado(posR01X, posR02Y, direcaoAtR01, posR02X, posR01Y, direcaoAtR02);
+                Exibicao.ExibirResultado(posR01X, posR01Y, direcaoAtR01, posR02X, posR02Y, direcaoAtR02);
 
                 Console.WriteLine("--------------------------------");
                 Console.Write("Deseja verifica nova Área? [S/N]: ");
