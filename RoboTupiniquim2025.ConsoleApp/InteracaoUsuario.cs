@@ -33,7 +33,7 @@
             Console.WriteLine("Ex: Canto superior Direito (5 5): Posição Inicial:(1 5 L) Comandos:(EMEMEMEEM)\n");
         }
 
-        public void EntradaDeDados(Robo robos)
+        public void EntradaDeDados()
         {
             Console.Write("Digite o tamanho da Area a ser Explorada: ");
             string[] resposta = Console.ReadLine()!.Split(' ');
@@ -52,11 +52,12 @@
             string respostaInstrucoes = Console.ReadLine()!.ToUpper();
             respostaInstrucoes.ToCharArray();
 
-            //for (int i = 0; i < respostaInstrucoes.Length; i++)
-            //{
-            //    char caractere = respostaInstrucoes[i];
-            //    instrucoes[i] = caractere;
-            //}
+            instrucoes = new char [respostaInstrucoes.Length];
+
+            for (int i = 0; i < respostaInstrucoes.Length; i++)
+            {
+                instrucoes[i] = respostaInstrucoes[i];
+            }
 
         }
 

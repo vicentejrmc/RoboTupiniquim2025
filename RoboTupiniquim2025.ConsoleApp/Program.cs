@@ -20,7 +20,7 @@ namespace RoboTupiniquim2025.ConsoleApp
 
             menu.ExibirResultado();
 
-            entradaDeDados.EntradaDeDados(robos);
+            entradaDeDados.EntradaDeDados();
 
 
 
