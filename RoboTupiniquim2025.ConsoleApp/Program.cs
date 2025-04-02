@@ -4,6 +4,8 @@ using System.Security.Claims;
 
 namespace RoboTupiniquim2025.ConsoleApp
 {
+
+
     internal class Program
     {
         public static int posR01X, posR01Y;
@@ -20,75 +22,16 @@ namespace RoboTupiniquim2025.ConsoleApp
 
 
 
-            
+
 
             Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
             Console.Write("Pressione [Enter] para sair.");
             Console.ReadKey();
 
         }
-        public static char GirarEsquerda(char direcao)
-        {
-            //Girar Esquerda
-            switch (direcao)
-            {
-                case 'N':
-                    direcao = 'O';
-                    break;
-                case 'O':
-                    direcao = 'S';
-                    break;
-                case 'S':
-                    direcao = 'L';
-                    break;
-                case 'L':
-                    direcao = 'N';
-                    break;
-            }
+        
 
-            return direcao;
-        }
 
-        public static char GirarDireita(char direcao)
-        {
-            //Girar Direita
-            switch (direcao)
-            {
-                case 'N':
-                    direcao = 'L';
-                    break;
-                case 'L':
-                    direcao = 'S';
-                    break;
-                case 'S':
-                    direcao = 'O';
-                    break;
-                case 'O':
-                    direcao = 'N';
-                    break;
-            }
-
-            return direcao;
-        }
-
-        public static void ProcessarComandos(char direcao, int posicaoY, int posicaoX)
-        {
-            switch (direcao)
-            {
-                case 'N':
-                    posicaoY++;
-                    break;
-                case 'S':
-                    posicaoY--;
-                    break;
-                case 'O':
-                    posicaoX--;
-                    break;
-                case 'L':
-                    posicaoX++;
-                    break;
-            }
-        }
 
         public static void ExibirMenu()
         {
