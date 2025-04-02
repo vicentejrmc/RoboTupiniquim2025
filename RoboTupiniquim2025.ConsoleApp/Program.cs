@@ -1,36 +1,40 @@
 ﻿using System.Diagnostics.Metrics;
 using System;
 using System.Security.Claims;
+using System.Security.AccessControl;
 
-namespace RoboTupiniquim2025.ConsoleApp
+namespace RoboTupiniquim2025.ConsoleApp;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        public static int posR01X, posR01Y;
-        public static int posR02X, posR02Y;
-        public static int eixoX, eixoY;
-        public static char direcaoAtR01, direcaoAtR02;
+        InteracaoUsuario menu = new InteracaoUsuario();
 
-        static void Main(string[] args)
-        {
-            InteracaoUsuario menu = new InteracaoUsuario();
-            InteracaoUsuario entradaDeDados = new InteracaoUsuario();
+        menu.ExibirMenu();
 
-            Robo robos = new Robo();
+        Console.Write("Digite o tamanho da Area a ser Explorada: ");
+        string[] resposta = Console.ReadLine()!.Split(' ');
 
-            menu.ExibirResultado();
+        int[] tamanhoDeArea = new int[2];
 
-            entradaDeDados.EntradaDeDados();
+        tamanhoDeArea[0] = int.Parse(resposta[0]);
+        tamanhoDeArea[1] = int.Parse(resposta[1]);
 
+        Robo robos = new Robo();
 
+        Console.Write($"Insira a posição inicial do Robo: ");
+        robos.PosicaoInicialRobo();
 
+        Console.WriteLine("Insira as instrunções do Robô: ");
+        robos.ReceberProcessarInstruncoes();
 
+        robos.PosicaoFinalRobo();
 
-            Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
-            Console.Write("Pressione [Enter] para sair.");
-            Console.ReadKey();
-
-        }
+        Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
+        Console.Write("Pressione [Enter] para sair.");
+        Console.ReadKey();
 
     }
+
 }

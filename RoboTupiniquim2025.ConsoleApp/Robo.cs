@@ -3,15 +3,39 @@
 public class Robo
 {
     char direcao;
-    int posicaoY; 
-    int posicaoX;
+    public int posicaoY; 
+    public int posicaoX;
+    char[] instrucoes;
 
 
-    public void PosicaoRobo()
+    public void PosicaoInicialRobo()
     {
-        posicaoY = 0;
-        posicaoX = 0;
-        direcao = ' ';
+        string[] posicaoInicial = Console.ReadLine()!.ToUpper().Split(' ');
+
+        posicaoX = int.Parse(posicaoInicial[0]);
+        posicaoY = int.Parse(posicaoInicial[1]);
+        direcao = char.Parse(posicaoInicial[2]);
+    }
+
+    public void ReceberProcessarInstruncoes()
+    {
+        string respostaInstrucoes = Console.ReadLine()!.ToUpper();
+        respostaInstrucoes.ToCharArray();
+
+        instrucoes = new char[respostaInstrucoes.Length];
+
+        for (int i = 0; i < respostaInstrucoes.Length; i++)
+        {
+            instrucoes[i] = respostaInstrucoes[i];
+
+            if (instrucoes[i] == 'E')
+                GirarEsquerda();
+            else if (instrucoes[i] == 'D')
+                GirarDireita();
+            else if (instrucoes[i] == 'M')
+                MoverRobo();
+
+        }
     }
 
     public void GirarEsquerda()
@@ -52,7 +76,7 @@ public class Robo
         }
     }
 
-    public void ProcessarComandos()
+    public void MoverRobo()
     {
         switch (direcao)
         {
@@ -69,6 +93,11 @@ public class Robo
                 posicaoX++;
                 break;
         }
+    }
+
+    public void PosicaoFinalRobo()
+    {
+        Console.WriteLine($"{posicaoX} {posicaoY} {direcao}");
     }
 
 }
