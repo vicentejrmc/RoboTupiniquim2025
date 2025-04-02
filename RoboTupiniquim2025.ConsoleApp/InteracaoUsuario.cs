@@ -27,6 +27,12 @@
             Console.WriteLine("Ex: Canto superior Direito (5 5): Posição Inicial:(1 5 L) Comandos:(EMEMEMEEM)\n");
         }
 
+        public void MensagemFinal()
+        {
+            Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
+            Console.Write("Pressione [Enter] para sair.");
+            Console.ReadKey();
+        }
 
     }
 }

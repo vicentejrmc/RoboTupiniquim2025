@@ -35,13 +35,9 @@ internal class Program
         }
 
         for (int i = 0;i < robos.Length;i++)
-        {
             robos[i].PosicaoFinalRobo();
-        }
 
-        Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
-        Console.Write("Pressione [Enter] para sair.");
-        Console.ReadKey();
+        menu.MensagemFinal();
 
     }
 
