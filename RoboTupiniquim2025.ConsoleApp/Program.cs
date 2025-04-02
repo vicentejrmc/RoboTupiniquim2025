@@ -21,15 +21,23 @@ internal class Program
         tamanhoDeArea[0] = int.Parse(resposta[0]);
         tamanhoDeArea[1] = int.Parse(resposta[1]);
 
-        Robo robos = new Robo();
+        Robo[] robos = new Robo[2];
+        robos[0] = new Robo();
+        robos[1] = new Robo();
 
-        Console.Write($"Insira a posição inicial do Robo: ");
-        robos.PosicaoInicialRobo();
+        for (int i = 0; i < robos.Length; i++)
+        {
+            Console.Write($"Insira a posição inicial do Robo 0{i + 1}: ");
+            robos[i].PosicaoInicialRobo();
 
-        Console.WriteLine("Insira as instrunções do Robô: ");
-        robos.ReceberProcessarInstruncoes();
+            Console.Write($"Insira as instrunções do Robô 0{i + 1}: ");
+            robos[i].ReceberProcessarInstruncoes();
+        }
 
-        robos.PosicaoFinalRobo();
+        for (int i = 0;i < robos.Length;i++)
+        {
+            robos[i].PosicaoFinalRobo();
+        }
 
         Console.WriteLine("Os Robôs Retornarão a base para recarregar.");
         Console.Write("Pressione [Enter] para sair.");
