@@ -7,6 +7,13 @@ public class Robo
     int posicaoX;
 
 
+    public void PosicaoRobo()
+    {
+        posicaoY = 0;
+        posicaoX = 0;
+        direcao = ' ';
+    }
+
     public void GirarEsquerda()
     {
         switch (direcao)

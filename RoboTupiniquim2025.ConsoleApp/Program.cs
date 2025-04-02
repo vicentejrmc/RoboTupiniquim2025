@@ -4,7 +4,6 @@ using System.Security.Claims;
 
 namespace RoboTupiniquim2025.ConsoleApp
 {
-
     internal class Program
     {
         public static int posR01X, posR01Y;
@@ -15,9 +14,13 @@ namespace RoboTupiniquim2025.ConsoleApp
         static void Main(string[] args)
         {
             InteracaoUsuario menu = new InteracaoUsuario();
+            InteracaoUsuario entradaDeDados = new InteracaoUsuario();
+
+            Robo robos = new Robo();
 
             menu.ExibirResultado();
 
+            entradaDeDados.EntradaDeDados(robos);
 
 
 
@@ -28,10 +31,6 @@ namespace RoboTupiniquim2025.ConsoleApp
             Console.ReadKey();
 
         }
-        
-
-
-
 
     }
 }

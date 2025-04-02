@@ -2,6 +2,13 @@
 {
     public class InteracaoUsuario
     {
+        public int[] tamanhoDeArea = new int[2];
+        public char[] instrucoes;
+        public int posicaoX;
+        public int posicaoY;
+        public char direcao;
+
+
         public void ExibirMenu()
         {
             Random batery = new Random();
@@ -24,6 +31,33 @@
 
             Console.WriteLine("Insira os parametros necessarios:\n");
             Console.WriteLine("Ex: Canto superior Direito (5 5): Posição Inicial:(1 5 L) Comandos:(EMEMEMEEM)\n");
+        }
+
+        public void EntradaDeDados(Robo robos)
+        {
+            Console.Write("Digite o tamanho da Area a ser Explorada: ");
+            string[] resposta = Console.ReadLine()!.Split(' ');
+
+            tamanhoDeArea[0] = int.Parse(resposta[0]);
+            tamanhoDeArea[1] = int.Parse(resposta[1]);
+
+            Console.Write($"Insira a posição inicial do Robo: ");
+            string[] posicaoInicial = Console.ReadLine()!.ToUpper().Split(' ');
+
+            posicaoX = int.Parse(posicaoInicial[0]);
+            posicaoY = int.Parse(posicaoInicial[1]);
+            direcao = char.Parse(posicaoInicial[2]);
+
+            Console.WriteLine("Insira as instrunções do Robô: ");
+            string respostaInstrucoes = Console.ReadLine()!.ToUpper();
+            respostaInstrucoes.ToCharArray();
+
+            //for (int i = 0; i < respostaInstrucoes.Length; i++)
+            //{
+            //    char caractere = respostaInstrucoes[i];
+            //    instrucoes[i] = caractere;
+            //}
+
         }
 
         public void ExibirResultado()
